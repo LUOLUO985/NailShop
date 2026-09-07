@@ -1,0 +1,39 @@
+page {
+  background: #f8f6f7;
+  color: #2f2a2c;
+  font-size: 28rpx;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+button {
+  font-size: 30rpx;
+}
+
+button::after {
+  border: none;
+}
+
+.btn-primary {
+  background: #d84e7e;
+  color: #fff;
+  border-radius: 44rpx;
+}
+
+.btn-primary[disabled] {
+  background: #e9a7bf;
+  color: #fff;
+}
+
+.state {
+  padding: 120rpx 40rpx;
+  text-align: center;
+  color: #9a9396;
+}
+
+.retry-btn {
+  margin-top: 30rpx;
+  width: 240rpx;
+  font-size: 28rpx;
+}

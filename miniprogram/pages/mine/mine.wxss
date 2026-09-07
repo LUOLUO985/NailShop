@@ -1,0 +1,161 @@
+.page {
+  padding: 40rpx 28rpx;
+}
+
+.mine-hero {
+  display: flex;
+  align-items: center;
+  padding: 36rpx 30rpx;
+  background: linear-gradient(135deg, #f7d8e2, #f3e7ec);
+  border-radius: 24rpx;
+}
+
+.avatar {
+  width: 96rpx;
+  height: 96rpx;
+  margin-right: 24rpx;
+  border-radius: 50%;
+  background: #d84e7e;
+  color: #fff;
+  font-size: 40rpx;
+  text-align: center;
+  line-height: 96rpx;
+}
+
+.mine-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #33282d;
+}
+
+.mine-sub {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #8b6f79;
+}
+
+.menu-card {
+  margin-top: 30rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 26rpx;
+}
+
+.menu-item + .menu-item {
+  border-top: 2rpx solid #f5eff1;
+}
+
+.menu-icon {
+  width: 68rpx;
+  height: 68rpx;
+  margin-right: 20rpx;
+  border-radius: 16rpx;
+  text-align: center;
+  line-height: 68rpx;
+  font-size: 30rpx;
+}
+
+.pink {
+  background: #fde8ef;
+  color: #d84e7e;
+}
+
+.purple {
+  background: #ece8fb;
+  color: #6f5bc4;
+}
+
+.blue {
+  background: #e6f1fb;
+  color: #3a7fc1;
+}
+
+.menu-content {
+  flex: 1;
+}
+
+.menu-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.menu-desc {
+  margin-top: 4rpx;
+  font-size: 23rpx;
+  color: #a08b93;
+}
+
+.menu-arrow {
+  color: #c8bcc0;
+  font-size: 44rpx;
+}
+
+.logout-btn {
+  margin-top: 34rpx;
+  background: #fff;
+  color: #c95a5a;
+  border-radius: 44rpx;
+}
+
+.login-card {
+  margin-top: 60rpx;
+  padding: 44rpx 34rpx 40rpx;
+  background: #fff;
+  border-radius: 24rpx;
+}
+
+.login-title {
+  font-size: 38rpx;
+  font-weight: 700;
+  text-align: center;
+}
+
+.login-desc {
+  margin-top: 10rpx;
+  text-align: center;
+  color: #a08b93;
+  font-size: 25rpx;
+}
+
+.password-input {
+  margin-top: 36rpx;
+  padding: 20rpx 24rpx;
+  background: #faf7f8;
+  border-radius: 12rpx;
+}
+
+.login-btn {
+  margin-top: 30rpx;
+}
+
+.lang-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 34rpx;
+  padding: 26rpx 28rpx;
+  background: #fff;
+  border-radius: 18rpx;
+}
+
+.lang-label {
+  font-size: 29rpx;
+  color: #4a4043;
+}
+
+.lang-value {
+  color: #d84e7e;
+  font-size: 28rpx;
+}
+
+.lang-arrow {
+  margin-left: 10rpx;
+  color: #c8bcc0;
+  font-size: 40rpx;
+}

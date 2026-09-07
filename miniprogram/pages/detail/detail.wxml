@@ -1,0 +1,81 @@
+<!--pages/detail/detail.wxml-->
+<view wx:if="{{loading}}" class="state">{{i18n.common.loading}}</view>
+
+<view wx:elif="{{loadError}}" class="state">
+  <view>{{errorText}}</view>
+  <button class="btn-primary retry-btn" bindtap="loadDetail">{{i18n.common.retry}}</button>
+</view>
+
+<view wx:elif="{{product}}">
+  <swiper
+    wx:if="{{product.images.length > 0}}"
+    class="swiper"
+    indicator-dots="{{true}}"
+    indicator-color="rgba(255,255,255,0.5)"
+    indicator-active-color="#ffffff"
+    circular="{{true}}"
+  >
+    <swiper-item wx:for="{{product.images}}" wx:key="*this">
+      <image
+        class="swiper-img"
+        src="{{item}}"
+        mode="aspectFill"
+        data-index="{{index}}"
+        binderror="onImageError"
+      />
+    </swiper-item>
+  </swiper>
+
+  <view wx:if="{{product.videos && product.videos.length > 0}}" class="video-list">
+    <video
+      wx:for="{{product.videos}}"
+      wx:key="*this"
+      class="demo-video"
+      src="{{item}}"
+      poster="{{product.cover}}"
+      controls="{{true}}"
+      object-fit="contain"
+    />
+  </view>
+
+  <view class="body">
+    <view class="info-card">
+      <view wx:if="{{product.code}}" class="product-code">{{i18n.common.codePrefix}} {{product.code}}</view>
+      <view class="product-name">{{product.name}}</view>
+      <view class="product-row">
+        <text class="product-price">{{product.priceLabel}}</text>
+        <text class="product-stock {{product.soldOut ? 'stock-empty' : ''}}">{{product.stockText}}</text>
+      </view>
+      <view wx:if="{{product.description}}" class="product-desc">
+        {{product.description}}
+      </view>
+      <view wx:if="{{product.soldOut}}" class="sold-tip">
+        {{i18n.detail.soldTip}}
+      </view>
+    </view>
+
+    <view class="contact-card">
+      <view class="contact-title">{{i18n.detail.contactTitle}}</view>
+      <view wx:if="{{qrFileID && !qrLoadFailed}}" class="qr-wrap">
+        <image
+          class="qr-img"
+          src="{{qrFileID}}"
+          mode="aspectFit"
+          show-menu-by-longpress="{{true}}"
+          binderror="onQrError"
+        />
+      </view>
+      <view wx:elif="{{qrLoadFailed}}" class="qr-empty">
+        {{i18n.detail.qrLoadFailed}}
+      </view>
+      <view wx:else class="qr-empty">
+        {{i18n.detail.qrEmpty}}
+      </view>
+      <view class="contact-tip">
+        {{i18n.detail.contactTip}}
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:else class="state">{{i18n.detail.notFound}}</view>

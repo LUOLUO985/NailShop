@@ -1,0 +1,69 @@
+.page {
+  padding: 28rpx;
+}
+
+.card {
+  padding: 34rpx 30rpx;
+  background: #fff;
+  border-radius: 22rpx;
+}
+
+.card-title {
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.card-desc {
+  margin-top: 12rpx;
+  color: #8b7f84;
+  font-size: 25rpx;
+}
+
+.qr-box {
+  margin-top: 34rpx;
+  padding: 34rpx;
+  background: #faf7f8;
+  border-radius: 18rpx;
+  text-align: center;
+}
+
+.qr-img {
+  width: 360rpx;
+  height: 360rpx;
+  border: 4rpx solid #fff;
+  box-shadow: 0 6rpx 20rpx rgba(78, 45, 58, 0.12);
+}
+
+.qr-empty {
+  padding: 120rpx 0;
+  color: #a08b93;
+}
+
+.current-tip {
+  margin-top: 18rpx;
+  font-size: 23rpx;
+  color: #a08b93;
+}
+
+.upload-btn {
+  margin-top: 30rpx;
+}
+
+.notice {
+  margin-top: 36rpx;
+  padding: 22rpx 24rpx;
+  background: #fdf5f8;
+  border-radius: 14rpx;
+}
+
+.notice-title {
+  color: #d84e7e;
+  font-weight: 600;
+  margin-bottom: 10rpx;
+}
+
+.notice-line {
+  color: #8f6f7a;
+  font-size: 24rpx;
+  line-height: 1.8;
+}

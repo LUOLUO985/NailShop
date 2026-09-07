@@ -1,0 +1,43 @@
+<!--pages/index/index.wxml-->
+<view class="page">
+  <view class="hero">
+    <image class="hero-bg" src="{{heroImage}}" mode="aspectFill" />
+    <view class="hero-mask"></view>
+    <view class="hero-content">
+      <view class="brand-name">{{shopName}}</view>
+      <view class="brand-sub">{{i18n.index.heroSub}}</view>
+    </view>
+  </view>
+
+  <view class="section-row">
+    <view class="section-title">{{i18n.index.sectionTitle}}</view>
+    <view class="lang-btn" bindtap="toggleLanguage">{{langSwitchText}}</view>
+  </view>
+
+  <view wx:if="{{products.length === 0}}" class="state">
+    {{i18n.index.empty}}
+  </view>
+
+  <view wx:else class="goods-grid">
+    <view
+      wx:for="{{products}}"
+      wx:key="code"
+      class="goods-card"
+      data-code="{{item.code}}"
+      bindtap="goDetail"
+    >
+      <view class="img-wrap">
+        <image class="goods-img" src="{{item.cover}}" mode="aspectFill" lazy-load="{{true}}" />
+        <view wx:if="{{item.soldOut}}" class="sold-tag">{{i18n.common.soldOut}}</view>
+      </view>
+      <view class="goods-info">
+        <view class="goods-name">{{item.name}}</view>
+        <view class="goods-code">{{i18n.common.codePrefix}} {{item.code}}</view>
+        <view class="goods-row">
+          <text class="price">{{item.priceLabel}}</text>
+          <text class="stock {{item.soldOut ? 'stock-empty' : ''}}">{{item.stockText}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

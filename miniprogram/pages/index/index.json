@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "墨痕Nails",
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

@@ -1,0 +1,71 @@
+<!--pages/mine/mine.wxml-->
+<view class="page">
+  <view class="mine-hero">
+    <view class="avatar">墨</view>
+    <view>
+      <view class="mine-title">墨痕Nails</view>
+      <view class="mine-sub">{{i18n.mine.heroSub}}</view>
+    </view>
+  </view>
+
+  <block wx:if="{{loggedIn}}">
+    <view class="menu-card">
+      <view class="menu-item" bindtap="goGoods">
+        <view class="menu-icon pink">甲</view>
+        <view class="menu-content">
+          <view class="menu-title">{{i18n.mine.goodsTitle}}</view>
+          <view class="menu-desc">{{i18n.mine.goodsDesc}}</view>
+        </view>
+        <view class="menu-arrow">›</view>
+      </view>
+
+      <view class="menu-item" bindtap="goSetting">
+        <view class="menu-icon purple">码</view>
+        <view class="menu-content">
+          <view class="menu-title">{{i18n.mine.settingTitle}}</view>
+          <view class="menu-desc">{{i18n.mine.settingDesc}}</view>
+        </view>
+        <view class="menu-arrow">›</view>
+      </view>
+
+      <view class="menu-item" bindtap="goMedia">
+        <view class="menu-icon blue">频</view>
+        <view class="menu-content">
+          <view class="menu-title">{{i18n.mine.mediaTitle}}</view>
+          <view class="menu-desc">{{i18n.mine.mediaDesc}}</view>
+        </view>
+        <view class="menu-arrow">›</view>
+      </view>
+    </view>
+
+    <button class="logout-btn" bindtap="logout">{{i18n.mine.logout}}</button>
+  </block>
+
+  <view wx:else class="login-card">
+    <view class="login-title">{{i18n.mine.loginTitle}}</view>
+    <view class="login-desc">{{i18n.mine.loginDesc}}</view>
+    <input
+      class="password-input"
+      password="{{true}}"
+      placeholder="{{i18n.mine.passwordPlaceholder}}"
+      value="{{password}}"
+      bindinput="onPasswordInput"
+    />
+    <button
+      class="btn-primary login-btn"
+      loading="{{loggingIn}}"
+      disabled="{{loggingIn}}"
+      bindtap="login"
+    >
+      {{i18n.mine.loginButton}}
+    </button>
+  </view>
+
+  <view class="lang-card" bindtap="toggleLanguage">
+    <view class="lang-label">{{i18n.mine.language}}</view>
+    <view class="lang-value">
+      {{lang === 'zh' ? '中文' : 'English'}}
+      <text class="lang-arrow">›</text>
+    </view>
+  </view>
+</view>

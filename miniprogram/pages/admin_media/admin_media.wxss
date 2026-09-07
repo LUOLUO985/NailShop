@@ -1,0 +1,138 @@
+.page {
+  padding: 28rpx;
+}
+
+.intro-card,
+.upload-card,
+.list-card,
+.steps-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 18rpx rgba(78, 45, 58, 0.05);
+}
+
+.intro-title,
+.list-title,
+.steps-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #33282d;
+}
+
+.intro-desc {
+  margin-top: 12rpx;
+  font-size: 25rpx;
+  color: #8b7f84;
+  line-height: 1.6;
+}
+
+.upload-btn {
+  margin-top: 6rpx;
+}
+
+.upload-note {
+  margin-top: 16rpx;
+  font-size: 23rpx;
+  color: #a08b93;
+  line-height: 1.6;
+}
+
+.migrate-btn {
+  margin-top: 24rpx;
+  background: #fde8ef;
+  color: #d84e7e;
+  border-radius: 44rpx;
+}
+
+.migrate-note {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  color: #a08b93;
+  line-height: 1.5;
+}
+
+.list-title {
+  margin-bottom: 18rpx;
+}
+
+.empty {
+  padding: 50rpx 0;
+  text-align: center;
+  color: #a08b93;
+  font-size: 25rpx;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  padding: 18rpx 0;
+  border-top: 2rpx solid #f7f2f4;
+}
+
+.file-item:first-of-type {
+  border-top: none;
+}
+
+.file-type {
+  flex-shrink: 0;
+  width: 76rpx;
+  height: 48rpx;
+  margin-right: 14rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 48rpx;
+  font-size: 22rpx;
+}
+
+.type-image {
+  background: #fde8ef;
+  color: #d84e7e;
+}
+
+.type-video {
+  background: #e6f1fb;
+  color: #3a7fc1;
+}
+
+.file-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.file-label {
+  display: block;
+  margin-bottom: 4rpx;
+  font-size: 23rpx;
+  color: #33282d;
+  font-weight: 600;
+}
+
+.file-id {
+  display: block;
+  font-size: 22rpx;
+  color: #5a5054;
+  word-break: break-all;
+  line-height: 1.5;
+}
+
+.copy-btn {
+  flex-shrink: 0;
+  margin-left: 14rpx;
+  background: #d84e7e;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 8rpx;
+}
+
+.steps-title {
+  margin-bottom: 14rpx;
+}
+
+.step-text {
+  margin-top: 12rpx;
+  font-size: 25rpx;
+  color: #6f6268;
+  line-height: 1.7;
+}

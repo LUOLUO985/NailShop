@@ -1,0 +1,142 @@
+<!--pages/admin_goods/admin_goods.wxml-->
+<view class="page">
+  <view class="topbar">
+    <view class="tip">{{i18n.adminGoods.tip}}</view>
+    <button class="btn-primary add-btn" bindtap="openCreate">{{i18n.adminGoods.add}}</button>
+  </view>
+
+  <view wx:if="{{loading}}" class="state">{{i18n.adminGoods.loading}}</view>
+
+  <view wx:elif="{{loadError}}" class="state">
+    <view>{{errorText}}</view>
+    <button class="btn-primary retry-btn" bindtap="loadGoods">{{i18n.common.retry}}</button>
+  </view>
+
+  <view wx:elif="{{goods.length === 0}}" class="state">
+    {{i18n.adminGoods.empty}}
+  </view>
+
+  <view wx:else class="goods-list">
+    <view class="goods-card" wx:for="{{goods}}" wx:key="_id">
+      <image class="goods-thumb" src="{{item.cover}}" mode="aspectFill" />
+      <view class="goods-main">
+        <view class="goods-name">{{item.name}}</view>
+        <view class="goods-meta">
+          <text class="price">{{item.priceLabel}}</text>
+          <text class="stock">{{i18n.adminGoods.stockLabel}} {{item.stock}}</text>
+        </view>
+        <view class="status-row">
+          <text class="status {{item.isOnSale ? 'status-on' : 'status-off'}}">
+            {{item.isOnSale ? i18n.adminGoods.onSale : i18n.adminGoods.offSale}}
+          </text>
+        </view>
+      </view>
+      <view class="goods-actions">
+        <button
+          class="mini-btn"
+          size="mini"
+          data-id="{{item._id}}"
+          bindtap="openEdit"
+        >
+          {{i18n.adminGoods.edit}}
+        </button>
+        <button
+          class="mini-btn {{item.isOnSale ? 'off' : 'on'}}"
+          size="mini"
+          data-id="{{item._id}}"
+          bindtap="toggleSale"
+        >
+          {{item.isOnSale ? i18n.adminGoods.putOff : i18n.adminGoods.putOn}}
+        </button>
+        <button
+          class="mini-btn danger"
+          size="mini"
+          data-id="{{item._id}}"
+          data-name="{{item.name}}"
+          bindtap="deleteGoods"
+        >
+          {{i18n.adminGoods.delete}}
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{modalVisible}}" class="modal-mask" bindtap="closeModal">
+  <view class="modal" catchtap="noop">
+    <view class="modal-title">{{modalTitle}}</view>
+    <scroll-view scroll-y class="modal-body">
+      <view class="field">
+        <view class="label">{{i18n.adminGoods.nameField}}</view>
+        <input
+          class="input"
+          placeholder="{{i18n.adminGoods.namePlaceholder}}"
+          value="{{form.name}}"
+          data-field="name"
+          bindinput="onFieldInput"
+        />
+      </view>
+
+      <view class="field-row">
+        <view class="field half">
+          <view class="label">{{i18n.adminGoods.priceField}}</view>
+          <input
+            class="input"
+            type="digit"
+            placeholder="0"
+            value="{{form.price}}"
+            data-field="price"
+            bindinput="onFieldInput"
+          />
+        </view>
+        <view class="field half">
+          <view class="label">{{i18n.adminGoods.stockField}}</view>
+          <input
+            class="input"
+            type="number"
+            placeholder="0"
+            value="{{form.stock}}"
+            data-field="stock"
+            bindinput="onFieldInput"
+          />
+        </view>
+      </view>
+
+      <view class="field">
+        <view class="label">{{i18n.adminGoods.imagesField}}</view>
+        <view class="uploader">
+          <view class="thumb-wrap" wx:for="{{form.images}}" wx:key="*this">
+            <image class="thumb" src="{{item}}" mode="aspectFill" />
+            <view
+              class="thumb-remove"
+              data-index="{{index}}"
+              catchtap="removeImage"
+            >
+              ×
+            </view>
+          </view>
+          <view
+            wx:if="{{form.images.length < 9}}"
+            class="add-thumb"
+            bindtap="chooseImages"
+          >
+            <text class="add-plus">＋</text>
+            <text class="add-text">{{i18n.adminGoods.upload}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view class="modal-footer">
+      <button class="cancel-btn" bindtap="closeModal">{{i18n.adminGoods.cancel}}</button>
+      <button
+        class="btn-primary save-btn"
+        loading="{{saving}}"
+        disabled="{{saving}}"
+        bindtap="submitForm"
+      >
+        {{i18n.adminGoods.save}}
+      </button>
+    </view>
+  </view>
+</view>
