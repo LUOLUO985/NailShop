@@ -1,92 +1,487 @@
-/**
- * ============================================================
- *  ★★★ 墨痕Nails 商品信息配置文件 ★★★
- *  📌 商品图片 / 演示视频推荐使用云存储地址：
- *    在「我的 → 素材上传」里把文件传到云存储并复制“文件 ID”，
- *    再把文件 ID 填到下面的 images / videos 里，不要放到代码包里。
- *
- *  以后要上架新商品 / 修改商品信息，主要就是改这个文件。
- *  保存后回到小程序首页刷新，新内容就会显示出来。
- *
- *  ── 新增商品的步骤 ──
- *  1. 用「我的 → 素材上传」上传商品图 / 演示视频，复制文件 ID；
- *  2. 复制下面 products 里的任意一段商品配置；
- *  3. 改编号、名称、价格，并把文件 ID 填到 images / videos 里。
- *
- *  只有 tabBar 图标这类必要小图才留在代码包；
- *  超过 200K 的图片/音频/视频请一律使用云存储或 CDN 的 URL。
- *
- *  每个商品都必须有唯一的“商品编号 code”，非常重要：
- *  001 之后请按 002、003、004…… 顺序递增，不要重复。
- * ============================================================
- */
-
 const products = [
   {
-    // ★★★ 商品编号（唯一，很重要）：这是顾客看到的编号，新增商品必须换新号
     code: '001',
-
-    // 商品名称，可以自由修改
     name: '墨痕 001 号',
-
-    // 英文名称（选填）：切换英文时显示；不填则继续显示上面的中文名
     nameEn: 'Mohen Style 001',
-
-    // 价格：直接写数字；例如 5 表示 5 欧元
-    price: 5,
-
-    // 货币符号：按你的要求这里用欧元 €；以后如果改人民币就改成 '¥'
+    price: 8,
     currency: '€',
-
-    // 商品图片：优先使用云存储文件 ID（cloud://…）或 CDN 的 https URL。
-    // 一个商品想放多张图，就在数组里多加一个地址。
-    images: ['/nails_picture/001.jpg'],
-
-    // 演示视频（选填）：上传到云存储后，把文件 ID 放进数组即可。
-    // 例：videos: ['cloud://环境ID.xxx/nails_assets/20260907/demo.mp4']
+    size: 'S',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/001.jpg'],
     videos: [],
-
-    // 库存：0 会显示“售罄”；目前只是展示，可写 1 表示在售
     stock: 1,
-
-    // 是否上架：true = 首页展示；false = 暂不展示（下架）
     isOnSale: true,
-
-    // 款式介绍，以后进详情页会用到，可先随便写
     description: '墨痕穿戴甲 001 号',
-
-    // 英文介绍（选填）
     descriptionEn: 'Mohen nail art style 001'
+  },
+  {
+    code: '002',
+    name: '墨痕 002 号',
+    nameEn: 'Mohen Style 002',
+    price: 6,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/002.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 002 号',
+    descriptionEn: 'Mohen nail art style 002'
+  },
+  {
+    code: '003',
+    name: '墨痕 003 号',
+    nameEn: 'Mohen Style 003',
+    price: 6,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/003.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 003 号',
+    descriptionEn: 'Mohen nail art style 003'
+  },
+  {
+    code: '004',
+    name: '墨痕 004 号',
+    nameEn: 'Mohen Style 004',
+    price: 5,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/004.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 004 号',
+    descriptionEn: 'Mohen nail art style 004'
+  },
+  {
+    code: '005',
+    name: '墨痕 005 号',
+    nameEn: 'Mohen Style 005',
+    price: 8,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/005.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 005 号',
+    descriptionEn: 'Mohen nail art style 005'
+  },
+  {
+    code: '006',
+    name: '墨痕 006 号',
+    nameEn: 'Mohen Style 006',
+    price: 6,
+    currency: '€',
+    size: 'L',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/006.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 006 号',
+    descriptionEn: 'Mohen nail art style 006'
+  },
+  {
+    code: '007',
+    name: '墨痕 007 号',
+    nameEn: 'Mohen Style 007',
+    price: 8,
+    currency: '€',
+    size: 'S',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/007.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 007 号',
+    descriptionEn: 'Mohen nail art style 007'
+  },
+  {
+    code: '008',
+    name: '墨痕 008 号',
+    nameEn: 'Mohen Style 008',
+    price: 5,
+    currency: '€',
+    size: 'L',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/008.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 008 号',
+    descriptionEn: 'Mohen nail art style 008'
+  },
+  {
+    code: '009',
+    name: '墨痕 009 号',
+    nameEn: 'Mohen Style 009',
+    price: 6,
+    currency: '€',
+    size: 'L',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/009.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 009 号',
+    descriptionEn: 'Mohen nail art style 009'
+  },
+  {
+    code: '010',
+    name: '墨痕 010 号',
+    nameEn: 'Mohen Style 010',
+    price: 8,
+    currency: '€',
+    size: 'XS',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/010.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 010 号',
+    descriptionEn: 'Mohen nail art style 010'
+  },
+  {
+    code: '011',
+    name: '墨痕 011 号',
+    nameEn: 'Mohen Style 011',
+    price: 8,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/011.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 011 号',
+    descriptionEn: 'Mohen nail art style 011'
+  },
+  {
+    code: '012',
+    name: '墨痕 012 号',
+    nameEn: 'Mohen Style 012',
+    price: 6,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/012.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 012 号',
+    descriptionEn: 'Mohen nail art style 012'
+  },
+  {
+    code: '013',
+    name: '墨痕 013 号',
+    nameEn: 'Mohen Style 013',
+    price: 6,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/013.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 013 号',
+    descriptionEn: 'Mohen nail art style 013'
+  },
+  {
+    code: '014',
+    name: '墨痕 014 号',
+    nameEn: 'Mohen Style 014',
+    price: 8,
+    currency: '€',
+    size: 'S',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/014.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 014 号',
+    descriptionEn: 'Mohen nail art style 014'
+  },
+  {
+    code: '015',
+    name: '墨痕 015 号',
+    nameEn: 'Mohen Style 015',
+    price: 8,
+    currency: '€',
+    size: 'S',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/015.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 015 号',
+    descriptionEn: 'Mohen nail art style 015'
+  },
+  {
+    code: '016',
+    name: '墨痕 016 号',
+    nameEn: 'Mohen Style 016',
+    price: 8,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/016.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 016 号',
+    descriptionEn: 'Mohen nail art style 016'
+  },
+  {
+    code: '017',
+    name: '墨痕 017 号',
+    nameEn: 'Mohen Style 017',
+    price: 8,
+    currency: '€',
+    size: 'S',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/017.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 017 号',
+    descriptionEn: 'Mohen nail art style 017'
+  },
+  {
+    code: '018',
+    name: '墨痕 018 号',
+    nameEn: 'Mohen Style 018',
+    price: 8,
+    currency: '€',
+    size: 'S',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/018.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 018 号',
+    descriptionEn: 'Mohen nail art style 018'
+  },
+  {
+    code: '019',
+    name: '墨痕 019 号',
+    nameEn: 'Mohen Style 019',
+    price: 6,
+    currency: '€',
+    size: 'S',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/019.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 019 号',
+    descriptionEn: 'Mohen nail art style 019'
+  },
+  {
+    code: '020',
+    name: '墨痕 020 号',
+    nameEn: 'Mohen Style 020',
+    price: 8,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/020.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 020 号',
+    descriptionEn: 'Mohen nail art style 020'
+  },
+  {
+    code: '021',
+    name: '墨痕 021 号',
+    nameEn: 'Mohen Style 021',
+    price: 8,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/021.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 021 号',
+    descriptionEn: 'Mohen nail art style 021'
+  },
+  {
+    code: '022',
+    name: '墨痕 022 号',
+    nameEn: 'Mohen Style 022',
+    price: 8,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/022.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 022 号',
+    descriptionEn: 'Mohen nail art style 022'
+  },
+  {
+    code: '023',
+    name: '墨痕 023 号',
+    nameEn: 'Mohen Style 023',
+    price: 8,
+    currency: '€',
+    size: 'S',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/023.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 023 号',
+    descriptionEn: 'Mohen nail art style 023'
+  },
+  {
+    code: '024',
+    name: '墨痕 024 号',
+    nameEn: 'Mohen Style 024',
+    price: 6,
+    currency: '€',
+    size: 'L',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/024.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 024 号',
+    descriptionEn: 'Mohen nail art style 024'
+  },
+  {
+    code: '025',
+    name: '墨痕 025 号',
+    nameEn: 'Mohen Style 025',
+    price: 8,
+    currency: '€',
+    size: 'S',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/025.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 025 号',
+    descriptionEn: 'Mohen nail art style 025'
+  },
+  {
+    code: '026',
+    name: '墨痕 026 号',
+    nameEn: 'Mohen Style 026',
+    price: 8,
+    currency: '€',
+    size: 'S',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/026.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 026 号',
+    descriptionEn: 'Mohen nail art style 026'
+  },
+  {
+    code: '027',
+    name: '墨痕 027 号',
+    nameEn: 'Mohen Style 027',
+    price: 6,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/027.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 027 号',
+    descriptionEn: 'Mohen nail art style 027'
+  },
+  {
+    code: '028',
+    name: '墨痕 028 号',
+    nameEn: 'Mohen Style 028',
+    price: 8,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/028.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 028 号',
+    descriptionEn: 'Mohen nail art style 028'
+  },
+  {
+    code: '029',
+    name: '墨痕 029 号',
+    nameEn: 'Mohen Style 029',
+    price: 6,
+    currency: '€',
+    size: 'L',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/029.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 029 号',
+    descriptionEn: 'Mohen nail art style 029'
+  },
+  {
+    code: '030',
+    name: '墨痕 030 号',
+    nameEn: 'Mohen Style 030',
+    price: 8,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/030.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 030 号',
+    descriptionEn: 'Mohen nail art style 030'
+  },
+  {
+    code: '031',
+    name: '墨痕 031 号',
+    nameEn: 'Mohen Style 031',
+    price: 6,
+    currency: '€',
+    size: 'S',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/031.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 031 号',
+    descriptionEn: 'Mohen nail art style 031'
+  },
+  {
+    code: '032',
+    name: '墨痕 032 号(售空)',
+    nameEn: 'Mohen Style 032',
+    price: 0,
+    currency: '€',
+    size: 'S',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/032.jpg'],
+    videos: [],
+    stock: 0,
+    isOnSale: true,
+    description: '墨痕穿戴甲 032 号',
+    descriptionEn: 'Mohen nail art style 032'
+  },
+  {
+    code: '033',
+    name: '墨痕 033 号',
+    nameEn: 'Mohen Style 033',
+    price: 6,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/033.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 033 号',
+    descriptionEn: 'Mohen nail art style 033'
+  },
+  {
+    code: '034',
+    name: '墨痕 034 号',
+    nameEn: 'Mohen Style 034',
+    price: 8,
+    currency: '€',
+    size: 'M',
+    images: ['cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/034.jpg'],
+    videos: [],
+    stock: 1,
+    isOnSale: true,
+    description: '墨痕穿戴甲 034 号',
+    descriptionEn: 'Mohen nail art style 034'
   }
-
-  // ───────────────
-  // 以后新增 002 号商品时，在上一行后面加“,”，再复制下面这段并修改：
-  // {
-  //   code: '002',                          // ★ 换成新商品编号
-  //   name: '墨痕 002 号',                  // 名称
-  //   nameEn: 'Mohen Style 002',            // 英文名称（选填）
-  //   price: 5,                             // 价格
-  //   currency: '€',                        // 货币符号
-  //   images: ['cloud://…/002.jpg'],         // 云存储文件 ID 或 https URL
-  //   videos: ['cloud://…/002.mp4'],         // 演示视频（选填）
-  //   stock: 1,
-  //   isOnSale: true,
-  //   description: '墨痕穿戴甲 002 号',
-  //   descriptionEn: 'Mohen nail art style 002' // 英文介绍（选填）
-  // }
 ];
 
 module.exports = {
-  // 店铺名称：首页背景上方显示
   shopName: '墨痕Nails',
-
-  // 首页顶部背景图（和本文件在同一目录）
-  heroImage: '/nails_picture/back.jpg',
-
-  // 商品列表
+  heroImage:
+    'cloud://cloudbase-d4guf8e8m5ba84eb5.636c-cloudbase-d4guf8e8m5ba84eb5-1483048306/nails-shop/back.jpg',
   products,
-
-  // 根据商品编号查找商品，供详情页使用
   findProductByCode(code) {
     const target = String(code || '').trim();
     return products.find((item) => String(item.code) === target) || null;

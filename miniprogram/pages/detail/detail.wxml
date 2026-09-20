@@ -1,9 +1,16 @@
 <!--pages/detail/detail.wxml-->
+<view wx:if="{{singlePageMode}}" class="single-page-tip">
+  {{i18n.share.singlePageHint}}
+</view>
+
 <view wx:if="{{loading}}" class="state">{{i18n.common.loading}}</view>
 
 <view wx:elif="{{loadError}}" class="state">
   <view>{{errorText}}</view>
-  <button class="btn-primary retry-btn" bindtap="loadDetail">{{i18n.common.retry}}</button>
+  <view class="error-actions">
+    <button class="btn-primary retry-btn" bindtap="loadDetail">{{i18n.common.retry}}</button>
+    <button class="btn-plain" bindtap="backToHome">{{i18n.common.backHome}}</button>
+  </view>
 </view>
 
 <view wx:elif="{{product}}">
@@ -42,8 +49,14 @@
     <view class="info-card">
       <view wx:if="{{product.code}}" class="product-code">{{i18n.common.codePrefix}} {{product.code}}</view>
       <view class="product-name">{{product.name}}</view>
+      <view wx:if="{{product.size}}" class="product-size">
+        <text class="size-label">{{i18n.common.size}}</text>
+        <text class="size-value">{{product.size}}</text>
+      </view>
       <view class="product-row">
-        <text class="product-price">{{product.priceLabel}}</text>
+        <text class="product-price">
+          {{product.priceLabel}}<text wx:if="{{product.unit}}" class="detail-unit">{{product.unit}}</text>
+        </text>
         <text class="product-stock {{product.soldOut ? 'stock-empty' : ''}}">{{product.stockText}}</text>
       </view>
       <view wx:if="{{product.description}}" class="product-desc">
@@ -56,6 +69,17 @@
 
     <view class="contact-card">
       <view class="contact-title">{{i18n.detail.contactTitle}}</view>
+      <view class="wechat-search-tip">{{i18n.detail.wechatSearchTip}}</view>
+      <view class="wechat-id-row" wx:for="{{wechatIds}}" wx:key="*this">
+        <text class="wechat-id">{{item}}</text>
+        <text
+          class="wechat-copy"
+          data-id="{{item}}"
+          bindtap="copyWechatId"
+        >
+          {{i18n.common.copy}}
+        </text>
+      </view>
       <view wx:if="{{qrFileID && !qrLoadFailed}}" class="qr-wrap">
         <image
           class="qr-img"
@@ -74,6 +98,19 @@
       <view class="contact-tip">
         {{i18n.detail.contactTip}}
       </view>
+      <view class="contact-note">{{i18n.detail.wechatQrNote}}</view>
+    </view>
+
+    <view wx:if="{{!singlePageMode}}" class="share-card">
+      <view class="share-title">{{i18n.share.detailCardTitle}}</view>
+      <button
+        class="share-btn"
+        open-type="share"
+        hover-class="share-btn-hover"
+      >
+        {{i18n.share.detailButton}}
+      </button>
+      <view class="share-tip">{{i18n.share.timelineHint}}</view>
     </view>
   </view>
 </view>

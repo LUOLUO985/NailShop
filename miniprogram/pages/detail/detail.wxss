@@ -44,6 +44,27 @@
   color: #33282d;
 }
 
+.product-size {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 14rpx;
+  padding: 6rpx 18rpx;
+  border-radius: 22rpx;
+  background: #f5f0f2;
+}
+
+.size-label {
+  margin-right: 10rpx;
+  font-size: 24rpx;
+  color: #8b7f84;
+}
+
+.size-value {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #4a4043;
+}
+
 .product-code {
   display: inline-block;
   margin-bottom: 10rpx;
@@ -73,6 +94,13 @@
   font-weight: 700;
 }
 
+.detail-unit {
+  margin-left: 4rpx;
+  font-size: 25rpx;
+  font-weight: 400;
+  color: #b66a83;
+}
+
 .product-stock {
   font-size: 25rpx;
   color: #8b7f84;
@@ -95,6 +123,39 @@
   font-size: 32rpx;
   font-weight: 600;
   margin-bottom: 24rpx;
+}
+
+.wechat-search-tip {
+  margin-bottom: 16rpx;
+  font-size: 25rpx;
+  color: #7a6b71;
+}
+
+.wechat-id-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14rpx;
+  padding: 18rpx 22rpx;
+  background: #faf7f8;
+  border-radius: 12rpx;
+}
+
+.wechat-id {
+  font-size: 29rpx;
+  font-weight: 600;
+  color: #33282d;
+  word-break: break-all;
+}
+
+.wechat-copy {
+  flex-shrink: 0;
+  margin-left: 18rpx;
+  padding: 6rpx 22rpx;
+  border-radius: 22rpx;
+  background: #d84e7e;
+  color: #fff;
+  font-size: 23rpx;
 }
 
 .qr-wrap {
@@ -126,8 +187,83 @@
   color: #7a6b71;
 }
 
+.contact-note {
+  margin-top: 18rpx;
+  padding: 18rpx 20rpx;
+  background: #fdf5f8;
+  color: #b04a6b;
+  border-radius: 12rpx;
+  font-size: 25rpx;
+  text-align: center;
+}
+
 .state {
   padding: 160rpx 40rpx;
   text-align: center;
   color: #9a9396;
+}
+
+.single-page-tip {
+  padding: 18rpx 24rpx;
+  background: #fde8ef;
+  color: #b04a6b;
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+
+.error-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-plain {
+  margin-top: 20rpx;
+  width: 240rpx;
+  font-size: 28rpx;
+  color: #8a5a69;
+  background: #fff;
+  border: 2rpx solid #e7cdd6;
+  border-radius: 44rpx;
+}
+
+.share-card {
+  padding: 30rpx;
+  text-align: center;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 18rpx rgba(78, 45, 58, 0.05);
+}
+
+.share-title {
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #33282d;
+}
+
+.share-btn {
+  display: inline-block;
+  width: auto;
+  height: 72rpx;
+  padding: 0 54rpx;
+  line-height: 68rpx;
+  font-size: 28rpx;
+  color: #fff;
+  background: #d84e7e;
+  border-radius: 36rpx;
+}
+
+.share-btn::after {
+  border: none;
+}
+
+.share-btn-hover {
+  background: #c2436f;
+}
+
+.share-tip {
+  margin-top: 18rpx;
+  font-size: 23rpx;
+  color: #a08b93;
 }

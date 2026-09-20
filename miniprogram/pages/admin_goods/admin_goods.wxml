@@ -18,7 +18,7 @@
 
   <view wx:else class="goods-list">
     <view class="goods-card" wx:for="{{goods}}" wx:key="_id">
-      <image class="goods-thumb" src="{{item.cover}}" mode="aspectFill" />
+      <image class="goods-thumb" src="{{item.coverDisplay}}" mode="aspectFill" />
       <view class="goods-main">
         <view class="goods-name">{{item.name}}</view>
         <view class="goods-meta">
@@ -105,11 +105,16 @@
       <view class="field">
         <view class="label">{{i18n.adminGoods.imagesField}}</view>
         <view class="uploader">
-          <view class="thumb-wrap" wx:for="{{form.images}}" wx:key="*this">
-            <image class="thumb" src="{{item}}" mode="aspectFill" />
+          <view
+            class="thumb-wrap"
+            wx:for="{{form.images}}"
+            wx:key="*this"
+            wx:for-index="imgIndex"
+          >
+            <image class="thumb" src="{{form.imagesDisplay[imgIndex]}}" mode="aspectFill" />
             <view
               class="thumb-remove"
-              data-index="{{index}}"
+              data-index="{{imgIndex}}"
               catchtap="removeImage"
             >
               ×

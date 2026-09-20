@@ -1,8 +1,34 @@
 const { callAdminAction, ensureAdminLogin } = require('../../utils/api');
 const { decorateProduct } = require('../../utils/format');
 const i18n = require('../../utils/i18n');
+const { resolveFileIDs, resolveUrl } = require('../../utils/cloudMedia');
 
 const MAX_IMAGES = 9;
+
+// 解析商品里 cloud:// 图片，并额外生成一个 coverDisplay 供列表缩略图使用；
+// 原始 cover / images 字段保持为文件 ID，避免误把 https 链接写回数据库。
+async function buildGoodsWithUrls(products) {
+  const items = (products || []).filter(Boolean);
+  const fileIDs = [];
+  items.forEach((item) => {
+    if (Array.isArray(item.images)) {
+      item.images.forEach((fileID) => {
+        if (fileID) fileIDs.push(fileID);
+      });
+    } else if (item.cover) {
+      fileIDs.push(item.cover);
+    }
+  });
+
+  await resolveFileIDs(fileIDs);
+
+  return items.map((item) => ({
+    ...item,
+    coverDisplay: resolveUrl(
+      item.cover || (item.images && item.images[0]) || ''
+    )
+  }));
+}
 
 Page({
   data: {
@@ -20,7 +46,8 @@ Page({
       name: '',
       price: '',
       stock: '',
-      images: []
+      images: [],
+      imagesDisplay: []
     }
   },
 
@@ -45,9 +72,9 @@ Page({
     this.setData({ loading: true, loadError: false });
     try {
       const data = await callAdminAction('adminListProducts');
-      const goods = (data.products || [])
-        .map(decorateProduct)
-        .filter(Boolean);
+      const goods = await buildGoodsWithUrls(
+        (data.products || []).map(decorateProduct)
+      );
       this.setData({ goods, loading: false });
     } catch (error) {
       this.setData({
@@ -62,14 +89,22 @@ Page({
     this.setData({
       modalVisible: true,
       modalTitle: i18n.getMessage(i18n.getLanguage(), 'adminGoods.newTitle'),
-      form: { id: '', name: '', price: '', stock: '', images: [] }
+      form: {
+        id: '',
+        name: '',
+        price: '',
+        stock: '',
+        images: [],
+        imagesDisplay: []
+      }
     });
   },
 
-  openEdit(event) {
+  async openEdit(event) {
     const id = event.currentTarget.dataset.id;
     const item = this.data.goods.find((goodsItem) => goodsItem._id === id);
     if (!item) return;
+    const images = (item.images || []).slice();
     this.setData({
       modalVisible: true,
       modalTitle: i18n.getMessage(i18n.getLanguage(), 'adminGoods.editTitle'),
@@ -78,8 +113,19 @@ Page({
         name: item.name,
         price: String(item.price),
         stock: String(item.stock),
-        images: (item.images || []).slice()
+        images,
+        imagesDisplay: images.slice()
       }
+    });
+    await this.refreshImagePreviews();
+  },
+
+  // 把表单里的文件 ID 换成可展示的 https 链接，用于编辑回显。
+  async refreshImagePreviews() {
+    const images = this.data.form.images || [];
+    await resolveFileIDs(images);
+    this.setData({
+      'form.imagesDisplay': images.map((fileID) => resolveUrl(fileID))
     });
   },
 
@@ -134,7 +180,10 @@ Page({
       }
       wx.hideLoading();
       this.setData({
-        'form.images': this.data.form.images.concat(uploaded)
+        'form.images': this.data.form.images.concat(uploaded),
+        // 刚上传的文件直接展示 chooseMedia 的本地临时路径，保证安卓即时可见；
+        // 重新打开编辑时仍会通过文件 ID 换成 https 链接。
+        'form.imagesDisplay': this.data.form.imagesDisplay.concat(tempPaths)
       });
     } catch (error) {
       wx.hideLoading();
@@ -150,8 +199,13 @@ Page({
   removeImage(event) {
     const index = event.currentTarget.dataset.index;
     const images = this.data.form.images.slice();
+    const imagesDisplay = this.data.form.imagesDisplay.slice();
     images.splice(index, 1);
-    this.setData({ 'form.images': images });
+    imagesDisplay.splice(index, 1);
+    this.setData({
+      'form.images': images,
+      'form.imagesDisplay': imagesDisplay
+    });
   },
 
   validateForm() {
@@ -229,8 +283,9 @@ Page({
       wx.hideLoading();
       const item = decorateProduct(data.product || null);
       if (item) {
+        const [displayItem] = await buildGoodsWithUrls([item]);
         const goods = this.data.goods.map((goodsItem) =>
-          goodsItem._id === item._id ? item : goodsItem
+          goodsItem._id === item._id ? displayItem : goodsItem
         );
         this.setData({ goods });
       }

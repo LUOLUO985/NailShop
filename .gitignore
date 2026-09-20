@@ -12,3 +12,6 @@ $RECYCLE.BIN/
 
 # Node.js
 node_modules/
+
+# 照片备份与转码输出（体积大，且商品图已存云存储，不进代码仓库）
+original_assets/

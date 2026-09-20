@@ -9,11 +9,29 @@ const messages = {
       soldOut: '售罄',
       soldOutLabel: '已售罄',
       stockPrefix: '库存',
-      codePrefix: '编号'
+      codePrefix: '编号',
+      size: '尺寸',
+      copy: '复制',
+      copied: '已复制',
+      backHome: '看看其他款式'
+    },
+    share: {
+      shopName: '墨痕Nails 穿戴甲',
+      homeTitle: '墨痕Nails 穿戴甲｜扫码咨询下单',
+      homeTimelineTitle: '墨痕Nails 穿戴甲｜新款持续更新',
+      friendSuffix: '｜扫码咨询下单',
+      timelineSuffix: '｜墨痕Nails 穿戴甲',
+      detailButton: '把这款分享给好友',
+      detailCardTitle: '喜欢这个款式？',
+      timelineHint: '也可以点右上角「···」分享到朋友圈',
+      singlePageHint: '正在浏览朋友圈分享页，点底部「前往小程序」可查看全部款式'
     },
     index: {
-      heroSub: '穿戴甲 · 扫码咨询',
+      heroSub: '手工制作 匠心之选',
       sectionTitle: '精选款式',
+      categoryStyles: '精品款式',
+      categoryAccessories: '配件',
+      demoTitle: '使用演示',
       empty: '暂时没有上架的美甲，欢迎稍后再来看看'
     },
     detail: {
@@ -22,6 +40,8 @@ const messages = {
       qrLoadFailed: '二维码图片加载失败，请稍后重试或联系店主',
       qrEmpty: '店主还没有上传微信二维码，请稍后再来看看',
       contactTip: '长按保存二维码，打开微信相册扫码添加我咨询',
+      wechatSearchTip: '请搜索以下任意一个微信号：',
+      wechatQrNote: '或扫描下方二维码添加微信选购商品。非诚勿扰。',
       notFound: '款式不存在'
     },
     mine: {
@@ -46,6 +66,10 @@ const messages = {
       logoutSuccess: '已退出',
       language: '语言',
       languageValue: '中文'
+    },
+    notifications: {
+      title: '通知',
+      empty: '暂无通知'
     },
     adminGoods: {
       tip: '只保留在后台，可随时下架 / 重新上架',
@@ -134,11 +158,29 @@ const messages = {
       soldOut: 'Sold Out',
       soldOutLabel: 'Sold Out',
       stockPrefix: 'In stock',
-      codePrefix: 'No.'
+      codePrefix: 'No.',
+      size: 'Size',
+      copy: 'Copy',
+      copied: 'Copied',
+      backHome: 'Browse other styles'
+    },
+    share: {
+      shopName: 'Mohen Nails Press-ons',
+      homeTitle: 'Mohen Nails Press-ons · Scan the QR code to order',
+      homeTimelineTitle: 'Mohen Nails Press-ons · New styles added often',
+      friendSuffix: ' · Scan the QR code to order',
+      timelineSuffix: ' | Mohen Nails Press-ons',
+      detailButton: 'Share this style',
+      detailCardTitle: 'Like this style?',
+      timelineHint: 'You can also tap "···" at the top right to share to Moments',
+      singlePageHint: 'You are viewing a Moments share page. Tap "Open Mini Program" at the bottom to see all styles.'
     },
     index: {
-      heroSub: 'Nail Art · Scan to Contact',
+      heroSub: 'Handmade · Chosen with Care',
       sectionTitle: 'Featured Styles',
+      categoryStyles: 'Nail Styles',
+      categoryAccessories: 'Accessories',
+      demoTitle: 'How to Use',
       empty: 'No styles available yet. Please check back later.'
     },
     detail: {
@@ -147,6 +189,8 @@ const messages = {
       qrLoadFailed: 'Failed to load the QR code. Please try again or contact the shop owner.',
       qrEmpty: 'The QR code has not been uploaded yet. Please check back later.',
       contactTip: 'Long press to save the QR code, then scan it from your WeChat album to add me.',
+      wechatSearchTip: 'Search for one of the following WeChat IDs:',
+      wechatQrNote: 'Or scan the QR code below to add me on WeChat for purchases. Serious inquiries only.',
       notFound: 'Style not found'
     },
     mine: {
@@ -171,6 +215,10 @@ const messages = {
       logoutSuccess: 'Logged out',
       language: 'Language',
       languageValue: 'English'
+    },
+    notifications: {
+      title: 'Notifications',
+      empty: 'No notifications'
     },
     adminGoods: {
       tip: 'Only visible in admin. Take styles off/on sale anytime.',
@@ -298,6 +346,9 @@ function localizeProduct(product, language) {
   }
   if (lang === 'en' && product.descriptionEn) {
     localized.description = product.descriptionEn;
+  }
+  if (lang === 'en' && product.unitEn) {
+    localized.unit = product.unitEn;
   }
 
   const stock = Number(product.stock);

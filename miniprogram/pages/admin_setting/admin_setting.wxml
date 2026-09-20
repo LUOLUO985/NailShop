@@ -11,7 +11,7 @@
         <view class="qr-empty">{{i18n.common.loading}}</view>
       </block>
       <block wx:elif="{{qrFileID}}">
-        <image class="qr-img" src="{{qrFileID}}" mode="aspectFit" />
+        <image class="qr-img" src="{{qrSrc}}" mode="aspectFit" />
         <view class="current-tip">{{i18n.adminSetting.current}}</view>
       </block>
       <block wx:else>

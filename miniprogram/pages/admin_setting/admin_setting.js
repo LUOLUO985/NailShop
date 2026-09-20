@@ -1,10 +1,12 @@
 const { callAction, callAdminAction, ensureAdminLogin } = require('../../utils/api');
 const i18n = require('../../utils/i18n');
+const { resolveFileIDs, resolveUrl } = require('../../utils/cloudMedia');
 
 Page({
   data: {
     loading: true,
     qrFileID: '',
+    qrSrc: '',
     uploading: false,
     lang: i18n.getLanguage(),
     i18n: i18n.getMessages(i18n.getLanguage())
@@ -27,11 +29,23 @@ Page({
     });
   },
 
+  async applyQr(fileID) {
+    const value = fileID || '';
+    if (value) {
+      await resolveFileIDs([value]);
+    }
+    this.setData({
+      qrFileID: value,
+      qrSrc: value ? resolveUrl(value) : ''
+    });
+  },
+
   async loadQr() {
     this.setData({ loading: true });
     try {
       const data = await callAction('getQr');
-      this.setData({ qrFileID: data.fileID || '', loading: false });
+      await this.applyQr(data.fileID || '');
+      this.setData({ loading: false });
     } catch (error) {
       this.setData({ loading: false });
       wx.showToast({
@@ -73,7 +87,8 @@ Page({
       const fileID = uploadRes.fileID;
       await callAdminAction('adminSaveQr', { fileID });
       wx.hideLoading();
-      this.setData({ qrFileID: fileID, uploading: false });
+      await this.applyQr(fileID);
+      this.setData({ uploading: false });
       wx.showToast({
         title: i18n.getMessage(i18n.getLanguage(), 'adminSetting.saved'),
         icon: 'success'

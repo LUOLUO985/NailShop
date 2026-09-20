@@ -1,5 +1,9 @@
 <!--pages/index/index.wxml-->
 <view class="page">
+  <view wx:if="{{singlePageMode}}" class="single-page-tip">
+    {{i18n.share.singlePageHint}}
+  </view>
+
   <view class="hero">
     <image class="hero-bg" src="{{heroImage}}" mode="aspectFill" />
     <view class="hero-mask"></view>
@@ -9,35 +13,103 @@
     </view>
   </view>
 
-  <view class="section-row">
-    <view class="section-title">{{i18n.index.sectionTitle}}</view>
+  <view class="toolbar">
+    <view class="category-tabs">
+      <view
+        class="category-tab {{activeCategory === 'styles' ? 'active' : ''}}"
+        data-category="styles"
+        bindtap="switchCategory"
+      >
+        {{i18n.index.categoryStyles}}
+      </view>
+      <view
+        class="category-tab {{activeCategory === 'accessories' ? 'active' : ''}}"
+        data-category="accessories"
+        bindtap="switchCategory"
+      >
+        {{i18n.index.categoryAccessories}}
+      </view>
+      <view
+        class="category-tab {{activeCategory === 'video' ? 'active' : ''}}"
+        data-category="video"
+        bindtap="switchCategory"
+      >
+        {{i18n.index.demoTitle}}
+      </view>
+    </view>
     <view class="lang-btn" bindtap="toggleLanguage">{{langSwitchText}}</view>
   </view>
 
-  <view wx:if="{{products.length === 0}}" class="state">
-    {{i18n.index.empty}}
-  </view>
+  <block wx:if="{{activeCategory === 'styles'}}">
+    <view wx:if="{{styleProducts.length === 0}}" class="state">
+      {{i18n.index.empty}}
+    </view>
 
-  <view wx:else class="goods-grid">
-    <view
-      wx:for="{{products}}"
-      wx:key="code"
-      class="goods-card"
-      data-code="{{item.code}}"
-      bindtap="goDetail"
-    >
-      <view class="img-wrap">
-        <image class="goods-img" src="{{item.cover}}" mode="aspectFill" lazy-load="{{true}}" />
-        <view wx:if="{{item.soldOut}}" class="sold-tag">{{i18n.common.soldOut}}</view>
-      </view>
-      <view class="goods-info">
-        <view class="goods-name">{{item.name}}</view>
-        <view class="goods-code">{{i18n.common.codePrefix}} {{item.code}}</view>
-        <view class="goods-row">
-          <text class="price">{{item.priceLabel}}</text>
-          <text class="stock {{item.soldOut ? 'stock-empty' : ''}}">{{item.stockText}}</text>
+    <view wx:else class="goods-grid">
+      <view
+        wx:for="{{styleProducts}}"
+        wx:key="code"
+        class="goods-card"
+        data-code="{{item.code}}"
+        bindtap="goDetail"
+      >
+        <view class="img-wrap">
+          <image class="goods-img" src="{{item.cover}}" mode="aspectFill" lazy-load="{{true}}" />
+          <view wx:if="{{item.soldOut}}" class="sold-tag">{{i18n.common.soldOut}}</view>
+        </view>
+        <view class="goods-info">
+          <view class="goods-name">{{item.name}}</view>
+          <view class="goods-code">{{i18n.common.codePrefix}} {{item.code}}</view>
+          <view class="goods-row">
+            <text class="price">
+              {{item.priceLabel}}<text wx:if="{{item.unit}}" class="price-unit">{{item.unit}}</text>
+            </text>
+            <text class="stock {{item.soldOut ? 'stock-empty' : ''}}">{{item.stockText}}</text>
+          </view>
         </view>
       </view>
     </view>
+  </block>
+
+  <block wx:elif="{{activeCategory === 'accessories'}}">
+    <view wx:if="{{accessoryProducts.length === 0}}" class="state">
+      {{i18n.index.empty}}
+    </view>
+
+    <view wx:else class="goods-grid">
+      <view
+        wx:for="{{accessoryProducts}}"
+        wx:key="code"
+        class="goods-card"
+        data-code="{{item.code}}"
+        bindtap="goDetail"
+      >
+        <view class="img-wrap">
+          <image class="goods-img" src="{{item.cover}}" mode="aspectFill" lazy-load="{{true}}" />
+          <view wx:if="{{item.soldOut}}" class="sold-tag">{{i18n.common.soldOut}}</view>
+        </view>
+        <view class="goods-info">
+          <view class="goods-name">{{item.name}}</view>
+          <view class="goods-code">{{i18n.common.codePrefix}} {{item.code}}</view>
+          <view class="goods-row">
+            <text class="price">
+              {{item.priceLabel}}<text wx:if="{{item.unit}}" class="price-unit">{{item.unit}}</text>
+            </text>
+            <text class="stock {{item.soldOut ? 'stock-empty' : ''}}">{{item.stockText}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view wx:else class="demo-category">
+    <view class="demo-title">{{i18n.index.demoTitle}}</view>
+    <video
+      class="demo-video"
+      src="{{demoVideo}}"
+      controls="{{true}}"
+      object-fit="contain"
+      autoplay="{{false}}"
+    />
   </view>
 </view>

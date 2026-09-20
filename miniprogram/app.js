@@ -6,8 +6,8 @@ App({
       return;
     }
     wx.cloud.init({
-      // env 留空表示使用默认云环境；如有多个环境请填写环境 ID
-      env: '',
+      // 当前云环境 ID；图片/视频/云函数都使用这个环境
+      env: 'cloudbase-d4guf8e8m5ba84eb5',
       traceUser: true
     });
     this.globalData = {};
